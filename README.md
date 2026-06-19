@@ -4,6 +4,8 @@ This is a small Next.js app where users can submit JavaScript snippets and see s
 
 The current implementation works for local demos, but it is not acceptable for production: `/app/api/run/route.js` calls into `lib/local-runner.js`, which executes submitted code in the application process.
 
+The app is hosted as a serverless web application on Vercel. Docker-based isolation and privileged child processes are not available in the production runtime, so the production fix needs remote sandbox execution that works from a hosted Next.js API route.
+
 ## Production task
 
 Add safe execution for user-submitted code and deploy it.
